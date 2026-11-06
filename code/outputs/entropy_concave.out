@@ -1,0 +1,18 @@
+n=3 cplx=0 seed=1 sanity sum=1.000000000000 min=4.35e-02
+random min gap 3.5605e-04 over 2000 pairs
+NM from 3.5605e-04 -> 1.1475e-09
+NM from 4.0286e-04 -> 2.1760e-14
+NM from 4.6367e-04 -> 1.3944e-13
+NM from 6.7212e-04 -> 3.1698e-11
+NM from 1.0891e-03 -> 5.5156e-13
+NM from 1.1340e-03 -> 8.4377e-15
+n=3 cplx=0 seed=1 best 8.4377e-15
+n=4 cplx=1 seed=2 sanity sum=1.000000000000 min=2.84e-03
+random min gap 2.3494e-04 over 3000 pairs
+NM from 2.3494e-04 -> 4.3285e-08
+NM from 2.5422e-04 -> 5.6440e-07
+NM from 2.7732e-04 -> 2.1277e-08
+NM from 5.8279e-04 -> 3.4648e-06
+NM from 1.0747e-03 -> 7.3392e-08
+NM from 1.0997e-03 -> 1.0465e-07
+n=4 cplx=1 seed=2 best 2.1277e-08

@@ -1,0 +1,206 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1.1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\newcommand{\Ent}{\operatorname{Ent}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\adj}{\operatorname{adj}}
+
+\hypersetup{pdftitle={Concavity of determinantal entropy on two points},pdfauthor={Yitzchak Shmalo}}
+
+\title[Concavity of determinantal entropy on two points]{Concavity of the entropy of determinantal measures on two points, and the second variation in general}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\email{yitzchak.shmalo@gmail.com}
+\date{6 November 2026}
+\subjclass[2020]{60G55, 94A17, 15A15, 15A45}
+\keywords{determinantal probability measure, entropy, concavity, principal minors}
+
+\begin{document}
+\begin{abstract}
+For a positive contraction $Q$ on $\ell^2(E)$ with $E$ finite, let $P_Q$ be the determinantal probability measure on $2^E$ and $\Ent(Q)$ its Shannon entropy. Lyons conjectured in 2003 that $\Ent$ is concave in $Q$. We prove the conjecture when $|E|=2$. For general $E$ we write the second derivative of $\Ent$ along a line as a negative quadratic form in the derivatives of the principal minors of $Q$ plus a sum, over subsets $T$ with $|T|\ge2$, of the second derivatives of the minors $\det Q_T$ weighted by M\"obius sums of $\log P_Q$. For two-element $T$ these weights are nonnegative by the Hadamard--Fischer inequality, which is what makes the case $|E|=2$ work. We also report numerical evidence for $|E|=3,4$: the second derivative is negative away from scalar kernels $cI$, where it vanishes in the off-diagonal directions.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Let $E$ be a finite set and $Q$ a positive contraction on $\ell^2(E)$, that is, a Hermitian matrix with $0\le Q\le I$. The determinantal probability measure $P_Q$ on $2^E$ is determined by $P_Q[\,A\subseteq Y\,]=\det Q_A$ for $A\subseteq E$, where $Q_A$ is the principal submatrix indexed by $A$ \cite{Ly03}. Its entropy is
+\[
+\Ent(Q)\;=\;-\sum_{S\subseteq E}P_Q[Y=S]\log P_Q[Y=S].
+\]
+In Section~9 of \cite{Ly03}, Lyons asked whether $\Ent$ is concave on the convex set $\{0\le Q\le I\}$ and stated the following conjecture, supported by numerical calculation.
+
+\begin{conjecture}[Lyons {\cite[Conjecture~9.2]{Ly03}}]\label{conj}
+For positive contractions $Q_1,Q_2$ on $\ell^2(E)$, $\Ent\bigl((Q_1+Q_2)/2\bigr)\ge\bigl(\Ent(Q_1)+\Ent(Q_2)\bigr)/2$.
+\end{conjecture}
+
+The conjecture is restated as Conjecture~2.6 of Lyons's survey \cite{Ly14}. By finite restrictions it implies Conjecture~5.3 there: the entropy of the stationary determinantal process $P_f$ with symbol $f$, studied by Lyons and Steif \cite{LS03}, is a concave function of $f$. The map $Q\mapsto P_Q$ is polynomial of degree $|E|$, so concavity of $\Ent$ is not inherited from the concavity of $x\mapsto -x\log x$.
+
+\begin{theorem}\label{thm:main}
+Conjecture~\ref{conj} holds when $|E|=2$.
+\end{theorem}
+
+Section~\ref{sec:two} proves Theorem~\ref{thm:main}. Section~\ref{sec:general} gives the second variation of $\Ent$ for arbitrary finite $E$ (Proposition~\ref{prop:second}) and explains which part of the two-point argument survives. Section~\ref{sec:numerics} records numerical evidence for $|E|=3$ and $4$.
+
+\section{Two points}\label{sec:two}
+
+Let $E=\{1,2\}$ and write $Q=\begin{psmallmatrix}a&b\\\bar b&d\end{psmallmatrix}$. The four probabilities are
+\begin{equation}\label{eq:p}
+p_{12}=\det Q,\qquad p_1=a-\det Q,\qquad p_2=d-\det Q,\qquad p_0=1-a-d+\det Q,
+\end{equation}
+where $p_S=P_Q[Y=S]$ and $p_0=P_Q[Y=\emptyset]$. A direct computation gives
+\begin{equation}\label{eq:cov}
+p_1p_2-p_0p_{12}=|b|^2 .
+\end{equation}
+Since $\Ent$ is continuous on the compact set $\{0\le Q\le I\}$, it suffices to prove concavity on the open set $\{0<Q<I\}$, where all four probabilities are positive: $p_0=\det(I-Q)>0$ and $p_{12}=\det Q>0$, so $p_1p_2>0$ by \eqref{eq:cov}, and $p_1+p_2=\lambda_1+\lambda_2-2\lambda_1\lambda_2>0$ for the eigenvalues $\lambda_1,\lambda_2\in(0,1)$ of $Q$. On that set concavity is equivalent to $f''(0)\le0$ for every $Q$ and every Hermitian $D$, where $f(t)=\Ent(Q+tD)$.
+
+Put $\varphi(x)=-x\log x$ and
+\[
+G(a,d,g)=\varphi(g)+\varphi(a-g)+\varphi(d-g)+\varphi(1-a-d+g),
+\]
+so that $\Ent(Q)=G(a,d,\det Q)$ by \eqref{eq:p}. The function $G$ is a sum of concave functions of affine maps, hence concave, and
+\begin{equation}\label{eq:L}
+\frac{\partial G}{\partial g}=\log\frac{p_1p_2}{p_0p_{12}}=:L\;\ge0
+\end{equation}
+by \eqref{eq:cov}. Along $Q+tD$ the entries $a,d$ move affinely, $\frac{d}{dt}\det(Q+tD)\big|_{0}=\tr(\adj(Q)D)=:\gamma$ and $\frac{d^2}{dt^2}\det(Q+tD)=2\det D$. Writing $x=D_{11}$, $y=D_{22}$, the chain rule gives
+\begin{equation}\label{eq:f2}
+f''(0)=-S+2L\det D,\qquad S=\frac{\ell_{12}^2}{p_{12}}+\frac{\ell_1^2}{p_1}+\frac{\ell_2^2}{p_2}+\frac{\ell_0^2}{p_0},
+\end{equation}
+with $\ell_{12}=\gamma$, $\ell_1=x-\gamma$, $\ell_2=y-\gamma$, $\ell_0=\gamma-x-y$. One checks directly that
+\begin{equation}\label{eq:id}
+\ell_1\ell_2-\ell_{12}\ell_0=xy .
+\end{equation}
+
+\begin{lemma}\label{lem:adj}
+For $0<Q<I$ on $\mathbb C^2$, the matrix $\adj Q$ has the same eigenvalues as $Q$; in particular $0\le\adj Q\le I$.
+\end{lemma}
+
+\begin{proof}
+$\adj Q=(\det Q)\,Q^{-1}$ has eigenvalues $\lambda_1\lambda_2/\lambda_1=\lambda_2$ and $\lambda_1\lambda_2/\lambda_2=\lambda_1$.
+\end{proof}
+
+\begin{lemma}\label{lem:A}
+Let $0<Q<I$ and $D\ge0$ on $\mathbb C^2$, and put $A=\gamma\,(\tr D-\gamma)=-\ell_{12}\ell_0$ and $r=\sqrt{p_0p_{12}}$. Then $A\ge(p_1+p_2+2r)\det D$.
+\end{lemma}
+
+\begin{proof}
+Work in an orthonormal eigenbasis of $\adj Q$, with eigenvalues $\mu_1=\lambda_2$, $\mu_2=\lambda_1$ (Lemma~\ref{lem:adj}), and let $\alpha,\delta\ge0$ be the diagonal entries of $D$ in that basis, so $\alpha\delta\ge\det D$. Then $\gamma=\mu_1\alpha+\mu_2\delta$ and $\tr D-\gamma=(1-\mu_1)\alpha+(1-\mu_2)\delta$, and
+\[
+A=\mu_1(1-\mu_1)\alpha^2+\mu_2(1-\mu_2)\delta^2+\bigl[\mu_1(1-\mu_2)+\mu_2(1-\mu_1)\bigr]\alpha\delta .
+\]
+The bracket equals $\lambda_1+\lambda_2-2\lambda_1\lambda_2=p_1+p_2$, and by the arithmetic--geometric mean inequality the first two terms are at least $2\sqrt{\mu_1\mu_2(1-\mu_1)(1-\mu_2)}\,\alpha\delta=2r\,\alpha\delta$, because $\lambda_1\lambda_2=p_{12}$ and $(1-\lambda_1)(1-\lambda_2)=p_0$. Hence $A\ge(p_1+p_2+2r)\alpha\delta\ge(p_1+p_2+2r)\det D$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix $0<Q<I$ and a Hermitian $D$. If $\det D\le0$ then $f''(0)\le0$ by \eqref{eq:f2} and \eqref{eq:L}. Otherwise $D$ is definite, and since \eqref{eq:f2} is even in $D$ we may assume $D\ge0$. Put $s=\sqrt{p_1p_2}$ and $r=\sqrt{p_0p_{12}}$, so $s\ge r$ by \eqref{eq:cov}. Applying $u^2/p+v^2/q\ge2|uv|/\sqrt{pq}$ to the pairs $(\ell_{12},\ell_0)$ and $(\ell_1,\ell_2)$,
+\[
+S\ \ge\ \frac{2|\ell_{12}\ell_0|}{r}+\frac{2|\ell_1\ell_2|}{s}=\frac{2\bigl(|A|s+|B|r\bigr)}{rs},\qquad B:=\ell_1\ell_2 .
+\]
+The logarithmic mean of $s^2$ and $r^2$ is at least their geometric mean, so $L=\log(s^2/r^2)\le(s^2-r^2)/(rs)$. By \eqref{eq:f2} it therefore suffices to show
+\begin{equation}\label{eq:star}
+|A|s+|B|r\ \ge\ (s^2-r^2)\det D .
+\end{equation}
+By Lemma~\ref{lem:adj} and $D\ge0$ we have $\gamma\ge0$ and $\tr D-\gamma=\tr((I-\adj Q)D)\ge0$, so $A\ge0$; and $A+B=xy\ge\det D\ge0$ by \eqref{eq:id}.
+
+If $B<0$, then $A>xy\ge\det D$, and $s\le\frac12(p_1+p_2)\le1$ gives $As\ge s^2\det D\ge(s^2-r^2)\det D$.
+
+If $B\ge0$, then $As+Br=(s-r)A+r\,xy$. Lemma~\ref{lem:A} and $p_1+p_2\ge2s$ give $A\ge(2s+2r)\det D\ge(s+r)\det D$, hence $As+Br\ge(s-r)(s+r)\det D+r\,xy\ge(s^2-r^2)\det D$.
+
+In both cases \eqref{eq:star} holds, so $f''(0)\le0$. Thus $\Ent$ is concave on $\{0<Q<I\}$ and, by continuity, on $\{0\le Q\le I\}$.
+\end{proof}
+
+\begin{remark}\label{rem:sharp}
+The bound is far from tight in the middle of the parameter range. Over $2\times10^5$ random pairs $(Q,D)$ with $D$ definite, the ratio $2L\det D/S$ never exceeded $0.28$. Equality $f''(0)=0$ occurs, for instance, at $b=0$, $a=d$ (that is, $Q=cI$) with $D$ off-diagonal: there $P_Q$ is a product measure, and moving $Q$ off the diagonal keeps the one-point marginals fixed while $P_Q$ changes only at second order, so the entropy, which is maximal among laws with those marginals, changes at fourth order.
+\end{remark}
+
+\section{The second variation for general $E$}\label{sec:general}
+
+For $T\subseteq E$ write $m_T=\det Q_T$ (with $m_\emptyset=1$). Inclusion--exclusion gives
+\begin{equation}\label{eq:mob}
+P_Q[Y=S]=\sum_{T\supseteq S}(-1)^{|T\setminus S|}m_T ,
+\end{equation}
+so $P_Q[Y=\cdot\,]$ is an affine function of the vector of principal minors. Differentiating $\Ent=\sum_S\varphi(P_Q[Y=S])$ twice along $Q+tD$ gives the following.
+
+\begin{proposition}\label{prop:second}
+Let $0<Q<I$, $D$ Hermitian, $p_S=P_Q[Y=S]$, and $m_T'$, $m_T''$ the first two derivatives of $\det(Q+tD)_T$ at $t=0$. Then
+\[
+\frac{d^2}{dt^2}\Ent(Q+tD)\Big|_{t=0}=-\sum_{S\subseteq E}\frac{1}{p_S}\Bigl(\sum_{T\supseteq S}(-1)^{|T\setminus S|}m_T'\Bigr)^{2}+\sum_{|T|\ge2}\Lambda_T\,m_T'',
+\]
+where $\Lambda_T=-\sum_{S\subseteq T}(-1)^{|T\setminus S|}\log p_S$.
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:mob}, $\frac{d}{dt}p_S=\sum_{T\supseteq S}(-1)^{|T\setminus S|}m_T'$ and $\frac{d^2}{dt^2}p_S=\sum_{T\supseteq S}(-1)^{|T\setminus S|}m_T''$. Since $\varphi'(x)=-1-\log x$ and $\varphi''(x)=-1/x$,
+\[
+\frac{d^2}{dt^2}\Ent=\sum_S\varphi''(p_S)\Bigl(\frac{dp_S}{dt}\Bigr)^2+\sum_T m_T''\sum_{S\subseteq T}(-1)^{|T\setminus S|}\varphi'(p_S).
+\]
+The constant $-1$ in $\varphi'$ contributes $\sum_{S\subseteq T}(-1)^{|T\setminus S|}=0$ for $T\ne\emptyset$, and $m_T''=0$ for $|T|\le1$ because $m_T$ is then affine in $t$.
+\end{proof}
+
+When $Q<I$, the measure $P_Q$ is the $L$-ensemble with $L=Q(I-Q)^{-1}$, that is $p_S=\det L_S/\det(I+L)$. The normalisation cancels in $\Lambda_T$ for $T\ne\emptyset$, so
+\[
+\Lambda_T=-\sum_{S\subseteq T}(-1)^{|T\setminus S|}\log\det L_S .
+\]
+For $T=\{i,j\}$,
+\[
+\Lambda_{ij}=\log\frac{L_{ii}L_{jj}}{\det L_{\{i,j\}}}\ \ge0
+\]
+by the Hadamard--Fischer inequality; for $|E|=2$ this is \eqref{eq:L}. The proof of Theorem~\ref{thm:main} uses exactly two features of the case $|E|=2$: the only curvature term is $\Lambda_{12}\,m_{12}''=2\Lambda_{12}\det D$, with $\Lambda_{12}\ge0$, and $\Lambda_{12}$ is controlled by the quadratic form through the logarithmic-mean inequality. For $|E|\ge3$ the coefficients $\Lambda_T$ with $|T|\ge3$ take both signs: for $|E|=3$, in $3000$ random kernels with spectra in $[0.05,0.95]$, $\Lambda_{123}$ was negative in $1508$ cases, and $\Lambda_T m_T''>0$ occurred for both $|T|=2$ and $|T|=3$. The curvature terms therefore have to be compared with the quadratic form jointly.
+
+\section{Numerical evidence for three and four points}\label{sec:numerics}
+
+We searched for counterexamples in two ways, with kernels $Q=U\operatorname{diag}(\lambda)U^*$ for $U$ from the QR factorisation of a Gaussian matrix (real or complex) and $\lambda\in(0,1)^n$.
+
+\emph{Midpoint gaps.} For $n=|E|=3$ (real) and $n=4$ (complex) we minimised $\Ent\bigl((Q_1+Q_2)/2\bigr)-\bigl(\Ent(Q_1)+\Ent(Q_2)\bigr)/2$ by Nelder--Mead from the worst of $2000$ and $3000$ random pairs. The minima were $8\times10^{-15}$ and $2\times10^{-8}$, attained as $Q_1-Q_2\to0$.
+
+\emph{Second derivatives.} We maximised the central difference $\bigl(\Ent(Q+hD)+\Ent(Q-hD)-2\Ent(Q)\bigr)/h^2$ with $h=10^{-3}$ and $\|D\|_F=1$, keeping the spectrum of $Q$ at distance at least $5h$ from $\{0,1\}$. For $n=3$ (real) and $n=4$ (complex) the maxima were $-2\times10^{-6}$ and $-1.2\times10^{-6}$, approached only near scalar kernels $Q=cI$ (in every optimised kernel the eigenvalues agreed to within $4\times10^{-4}$). Near those points, for $n=3$, $Q=cI+\varepsilon A$ with $c\in[0.2,0.8]$, $\varepsilon$ down to $3\times10^{-3}$ and $400$ random real symmetric pairs $(A,D)$, half of them with $D$ off-diagonal, the second derivative stayed negative. This matches Remark~\ref{rem:sharp}: scalar kernels give product measures, and off-diagonal perturbations preserve the one-point marginals.
+
+The formula of Proposition~\ref{prop:second} agrees with central differences to relative accuracy $3\times10^{-6}$ at $n=3$.
+
+\section*{Acknowledgements and funding}
+The research presented in this paper was supported by the European Research
+Council (ERC) under the European Union's Horizon Europe research and
+innovation programme (grant agreement No.~101041711), by the Simons
+Foundation as part of the Collaboration on the Mathematical and Scientific
+Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by
+the Israel Science Foundation (grant number 2258/19), and by the Israel
+Science Foundation (ISF Grant 4101/25). Computational resources were
+provided in part by Google Cloud through its education credits program
+(credit 530550103).
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and
+has a management role at Convex Nexus Capital. These entities are included
+in the funding declaration above.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, found the proof of Theorem~\ref{thm:main} and the formula of Proposition~\ref{prop:second}, wrote and ran the computations of Section~\ref{sec:numerics}, and wrote the paper. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\section*{Data availability}
+No data were used. The code for the computations of Remark~\ref{rem:sharp} and Sections~\ref{sec:general}--\ref{sec:numerics}, with their outputs, is available at\\ \url{https://github.com/yspennstate/lyons-determinantal-entropy-two-points}.
+
+\begin{thebibliography}{9}
+
+\bibitem{Ly03}
+R.~Lyons, Determinantal probability measures, \emph{Publ. Math. Inst. Hautes \'Etudes Sci.} \textbf{98} (2003), 167--212.
+
+\bibitem{Ly14}
+R.~Lyons, Determinantal probability: basic properties and conjectures, in \emph{Proceedings of the International Congress of Mathematicians, Seoul 2014}; arXiv:1406.2707.
+
+\bibitem{LS03}
+R.~Lyons and J.~E.~Steif, Stationary determinantal processes: phase multiplicity, Bernoullicity, entropy, and domination, \emph{Duke Math. J.} \textbf{120} (2003), 515--575.
+
+\end{thebibliography}
+\end{document}
