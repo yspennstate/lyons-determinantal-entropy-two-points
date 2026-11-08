@@ -1,0 +1,7 @@
+start 0: sum R logP +3.3e-16  -sum T logP -0.00000  -sum R^2/2P -2.00000  b -2.000000
+start 1: sum R logP +3.3e-16  -sum T logP -0.00000  -sum R^2/2P -2.00000  b -2.000000
+start 2: sum R logP +3.3e-16  -sum T logP -0.00000  -sum R^2/2P -2.00000  b -2.000000
+start 3: sum R logP +3.3e-16  -sum T logP -0.00000  -sum R^2/2P -2.00000  b -2.000000
+start 4: sum R logP +3.3e-16  -sum T logP -0.00000  -sum R^2/2P -2.00000  b -2.000000
+start 5: sum R logP +2.2e-16  -sum T logP -0.00000  -sum R^2/2P -2.00000  b -2.000000
+n=2 k=1 R sup b -2.000000e+00 ; largest -sum T log P seen -0.00000

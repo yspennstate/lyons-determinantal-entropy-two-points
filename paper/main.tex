@@ -24,13 +24,13 @@
 \author{Yitzchak Shmalo}
 \address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
 \email{yitzchak.shmalo@gmail.com}
-\date{6 November 2026}
+\date{8 November 2026}
 \subjclass[2020]{60G55, 94A17, 15A15, 15A45}
 \keywords{determinantal probability measure, entropy, concavity, principal minors}
 
 \begin{document}
 \begin{abstract}
-For a positive contraction $Q$ on $\ell^2(E)$ with $E$ finite, let $P_Q$ be the determinantal probability measure on $2^E$ and $\Ent(Q)$ its Shannon entropy. Lyons conjectured in 2003 that $\Ent$ is concave in $Q$. We prove the conjecture when $|E|=2$. For general $E$ we write the second derivative of $\Ent$ along a line as a negative quadratic form in the derivatives of the principal minors of $Q$ plus a sum, over subsets $T$ with $|T|\ge2$, of the second derivatives of the minors $\det Q_T$ weighted by M\"obius sums of $\log P_Q$. For two-element $T$ these weights are nonnegative by the Hadamard--Fischer inequality, which is what makes the case $|E|=2$ work. We also report numerical evidence for $|E|=3,4$: the second derivative is negative away from scalar kernels $cI$, where it vanishes in the off-diagonal directions.
+For a positive contraction $Q$ on $\ell^2(E)$ with $E$ finite, let $P_Q$ be the determinantal probability measure on $2^E$ and $\Ent(Q)$ its Shannon entropy. Lyons conjectured in 2003 that $\Ent$ is concave in $Q$. We prove the conjecture when $|E|=2$. For general $E$ we write the second derivative of $\Ent$ along a line as a negative quadratic form in the derivatives of the principal minors of $Q$ plus a sum, over subsets $T$ with $|T|\ge2$, of the second derivatives of the minors $\det Q_T$ weighted by M\"obius sums of $\log P_Q$. For two-element $T$ these weights are nonnegative by the Hadamard--Fischer inequality, which is what makes the case $|E|=2$ work. At a reducible kernel $Q=Q_1\oplus Q_2$ the second variation vanishes in every off-block direction, and the entropy decreases there at fourth order, by the $\chi^2$ term of the mutual information between the two blocks. We also report numerical evidence for $|E|\le4$, for real and complex kernels: the largest eigenvalue of the Hessian of $\Ent$ is negative at random kernels, and its supremum, zero, is approached at reducible kernels.
 \end{abstract}
 \maketitle
 
@@ -52,7 +52,7 @@ The conjecture is restated as Conjecture~2.6 of Lyons's survey \cite{Ly14}. By f
 Conjecture~\ref{conj} holds when $|E|=2$.
 \end{theorem}
 
-Section~\ref{sec:two} proves Theorem~\ref{thm:main}. Section~\ref{sec:general} gives the second variation of $\Ent$ for arbitrary finite $E$ (Proposition~\ref{prop:second}) and explains which part of the two-point argument survives. Section~\ref{sec:numerics} records numerical evidence for $|E|=3$ and $4$.
+Section~\ref{sec:two} proves Theorem~\ref{thm:main}. Section~\ref{sec:general} gives the second variation of $\Ent$ for arbitrary finite $E$ (Proposition~\ref{prop:second}) and explains which part of the two-point argument survives. Section~\ref{sec:reducible} shows that the second variation vanishes at reducible kernels in the off-block directions and identifies the fourth-order term. Section~\ref{sec:numerics} records numerical evidence for $|E|=3$ and $4$.
 
 \section{Two points}\label{sec:two}
 
@@ -159,6 +159,40 @@ For $T=\{i,j\}$,
 \]
 by the Hadamard--Fischer inequality; for $|E|=2$ this is \eqref{eq:L}. The proof of Theorem~\ref{thm:main} uses exactly two features of the case $|E|=2$: the only curvature term is $\Lambda_{12}\,m_{12}''=2\Lambda_{12}\det D$, with $\Lambda_{12}\ge0$, and $\Lambda_{12}$ is controlled by the quadratic form through the logarithmic-mean inequality. For $|E|\ge3$ the coefficients $\Lambda_T$ with $|T|\ge3$ take both signs: for $|E|=3$, in $3000$ random kernels with spectra in $[0.05,0.95]$, $\Lambda_{123}$ was negative in $1508$ cases, and $\Lambda_T m_T''>0$ occurred for both $|T|=2$ and $|T|=3$. The curvature terms therefore have to be compared with the quadratic form jointly.
 
+\section{Reducible kernels}\label{sec:reducible}
+
+The equality case of Remark~\ref{rem:sharp} is an instance of a general phenomenon. Call $Q$ \emph{reducible} if $E=B_1\sqcup B_2$ with $B_1,B_2$ nonempty and $Q=Q_1\oplus Q_2$, where $Q_j=Q_{B_j}$. Then $P_Q=P_{Q_1}\otimes P_{Q_2}$, since $\det Q_A=\det Q_{A\cap B_1}\det Q_{A\cap B_2}$ for every $A\subseteq E$. An \emph{off-block direction} is a Hermitian $D$ with $D_{B_1}=0$ and $D_{B_2}=0$.
+
+\begin{lemma}\label{lem:marg}
+Let $Q=Q_1\oplus Q_2$ and let $D$ be an off-block direction. For every real $t$ with $0\le Q+tD\le I$, the law of $Y\cap B_j$ under $P_{Q+tD}$ is $P_{Q_j}$, $j=1,2$. Consequently
+\[
+\Ent(Q+tD)=\Ent(Q_1)+\Ent(Q_2)-I(t),
+\]
+where $I(t)$ is the mutual information of $Y\cap B_1$ and $Y\cap B_2$ under $P_{Q+tD}$, and $I(t)$ is the relative entropy of $P_{Q+tD}$ with respect to $P_Q$.
+\end{lemma}
+
+\begin{proof}
+For $A\subseteq B_j$ we have $P_{Q+tD}[A\subseteq Y]=\det(Q+tD)_A=\det(Q_j)_A$, because $D$ vanishes on $B_j\times B_j$; these probabilities determine the law of $Y\cap B_j$. The identity for $\Ent$ is the chain rule $H(Y)=H(Y\cap B_1)+H(Y\cap B_2)-I$. Since both marginals are fixed and $P_Q$ is their product, the mutual information equals the relative entropy of $P_{Q+tD}$ with respect to $P_Q$.
+\end{proof}
+
+\begin{proposition}\label{prop:reducible}
+Let $0<Q<I$ be reducible as above, $D$ an off-block direction, $p_S=P_Q[Y=S]$ and $p_S(t)=P_{Q+tD}[Y=S]$. Then $p_S(t)=p_S+r_St^2+O(t^4)$ for some real $r_S$, and
+\[
+\Ent(Q+tD)=\Ent(Q)-\frac{t^4}{2}\sum_{S\subseteq E}\frac{r_S^2}{p_S}+O(t^6).
+\]
+In particular the second derivative of $\Ent$ at $Q$ in the direction $D$ is $0$, and $t\mapsto\Ent(Q+tD)$ has a strict local maximum at $t=0$ unless $r=0$.
+\end{proposition}
+
+\begin{proof}
+Let $U=I_{B_1}\oplus(-I_{B_2})$. Then $U(Q+tD)U^*=Q-tD$, and conjugation by a diagonal unitary does not change principal minors, so $p_S(-t)=p_S(t)$; each $p_S(t)$ is a polynomial in $t$, hence $p_S(t)=p_S+r_St^2+O(t^4)$. Since $0<Q<I$, $P_Q$ is the $L$-ensemble with $L=Q(I-Q)^{-1}$ positive definite, so every $p_S>0$. By Lemma~\ref{lem:marg}, $\Ent(Q)-\Ent(Q+tD)=I(t)=\sum_S p_S(t)\log\bigl(p_S(t)/p_S\bigr)$. With $\delta_S=p_S(t)-p_S$ and $\sum_S\delta_S=0$,
+\[
+\sum_S(p_S+\delta_S)\log\Bigl(1+\frac{\delta_S}{p_S}\Bigr)=\sum_S\frac{\delta_S^2}{2p_S}+O(|\delta|^3),
+\]
+and $\delta_S=r_St^2+O(t^4)$.
+\end{proof}
+
+For $|E|=2$ and $Q=\operatorname{diag}(q_1,q_2)$, $D=\bigl(\begin{smallmatrix}0&x\\\bar x&0\end{smallmatrix}\bigr)$, the four atoms are $p_S\pm t^2|x|^2$ and the coefficient is $\frac12|x|^4\sum_S p_S^{-1}$; for $\|D\|_F=1$ and $q_1=q_2=\frac12$ it equals $2$. Two consequences are worth recording. First, the Hessian of $\Ent$ on $\{0<Q<I\}$ is singular at every reducible kernel, so a proof of Conjecture~\ref{conj} cannot rest on a uniform negative bound for the second variation; near reducible kernels the fourth-order term is the one that carries the sign. Second, the lemma gives more than the local statement: along every off-block line through a reducible kernel, $\Ent$ is maximal at the reducible kernel itself, because $I(t)\ge0$. Concavity along such a line, however, would need $I$ to be convex in $t$, which Lemma~\ref{lem:marg} does not give.
+
 \section{Numerical evidence for three and four points}\label{sec:numerics}
 
 We searched for counterexamples in two ways, with kernels $Q=U\operatorname{diag}(\lambda)U^*$ for $U$ from the QR factorisation of a Gaussian matrix (real or complex) and $\lambda\in(0,1)^n$.
@@ -168,6 +202,14 @@ We searched for counterexamples in two ways, with kernels $Q=U\operatorname{diag
 \emph{Second derivatives.} We maximised the central difference $\bigl(\Ent(Q+hD)+\Ent(Q-hD)-2\Ent(Q)\bigr)/h^2$ with $h=10^{-3}$ and $\|D\|_F=1$, keeping the spectrum of $Q$ at distance at least $5h$ from $\{0,1\}$. For $n=3$ (real) and $n=4$ (complex) the maxima were $-2\times10^{-6}$ and $-1.2\times10^{-6}$, approached only near scalar kernels $Q=cI$ (in every optimised kernel the eigenvalues agreed to within $4\times10^{-4}$). Near those points, for $n=3$, $Q=cI+\varepsilon A$ with $c\in[0.2,0.8]$, $\varepsilon$ down to $3\times10^{-3}$ and $400$ random real symmetric pairs $(A,D)$, half of them with $D$ off-diagonal, the second derivative stayed negative. This matches Remark~\ref{rem:sharp}: scalar kernels give product measures, and off-diagonal perturbations preserve the one-point marginals.
 
 The formula of Proposition~\ref{prop:second} agrees with central differences to relative accuracy $3\times10^{-6}$ at $n=3$.
+
+\emph{The exact Hessian.} For $S\subseteq E$ let $M_S$ be the matrix whose $i$-th row is the $i$-th row of $Q$ if $i\in S$ and of $I-Q$ if $i\notin S$; by multilinearity of the determinant in rows, $p_S=\det M_S$. Along $Q+tD$ we have $M_S'=J_SD$ with $J_S$ diagonal, $+1$ on $S$ and $-1$ off $S$. For a basis $(E_a)$ of the Hermitian matrices and $A_a=M_S^{-1}J_SE_a$, Jacobi's formula gives $\partial_ap_S=p_S\tr A_a$ and $\partial_a\partial_bp_S=p_S(\tr A_a\tr A_b-\tr A_aA_b)$, so the Hessian of $\Ent$ is
+\[
+H_{ab}=-\sum_S\Bigl(\partial_a\partial_bp_S\,\log p_S+\frac{\partial_ap_S\,\partial_bp_S}{p_S}\Bigr).
+\]
+This agrees with finite differences to relative accuracy $10^{-6}$ for real and $10^{-7}$ for complex kernels, $n=2,3,4$. Writing $Q=U\operatorname{diag}(\sigma(x))U^*$ with $\sigma$ the logistic function and $U$ the exponential of a real skew-symmetric (respectively skew-Hermitian) matrix, we maximised the largest eigenvalue of $H$ over $(x,U)$ by Nelder--Mead. Over real symmetric directions, with $8$, $20$ and $10$ starts for $n=2,3,4$, the largest values found were $3.8\times10^{-15}$, $3.6\times10^{-15}$ and $7.1\times10^{-15}$; over Hermitian directions, with $6$, $8$ and $6$ starts, $1.6\times10^{-15}$, $3.2\times10^{-15}$ and $4.1\times10^{-15}$. These are zero to rounding, and every maximiser was reducible ($n=2$: diagonal; $n=3,4$: one point split off from the rest), which is the null direction of Proposition~\ref{prop:reducible}. At random kernels, without optimisation, the largest eigenvalue was strictly negative (median $-0.10$ for $n=3$ and $-0.034$ for $n=4$ over $40$ real kernels).
+
+\emph{Fourth order at reducible kernels.} For $48$ reducible kernels with random off-block directions $\|D\|_F=1$ ($n=2,\dots,5$, real and complex, random block sizes), a least-squares fit of $\Ent(Q+tD)-\Ent(Q)=at^2+bt^4+ct^6$ on $t\in[0.02,0.06]$ gave $|a|\le10^{-6}$ and $b<0$ in every case, the largest being $b=-0.536$, in agreement with Proposition~\ref{prop:reducible}. The quantity $\frac12\sum_Sr_S^2/p_S$, computed from the $t^2$ coefficients of the atoms, has infimum $2$, $1$ and $0.5$ for $n=2$, for $n=3$ with blocks of sizes $1,2$, and for $n=4$ with two blocks of size $2$, approached as the spectrum of $Q$ tends to $\{\frac12\}$.
 
 \section*{Acknowledgements and funding}
 The research presented in this paper was supported by the European Research
@@ -186,7 +228,7 @@ has a management role at Convex Nexus Capital. These entities are included
 in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, found the proof of Theorem~\ref{thm:main} and the formula of Proposition~\ref{prop:second}, wrote and ran the computations of Section~\ref{sec:numerics}, and wrote the paper. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, found the proof of Theorem~\ref{thm:main}, the formula of Proposition~\ref{prop:second} and Proposition~\ref{prop:reducible}, wrote and ran the computations of Section~\ref{sec:numerics}, and wrote the paper. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \section*{Data availability}
 No data were used. The code for the computations of Remark~\ref{rem:sharp} and Sections~\ref{sec:general}--\ref{sec:numerics}, with their outputs, is available at\\ \url{https://github.com/yspennstate/lyons-determinantal-entropy-two-points}.

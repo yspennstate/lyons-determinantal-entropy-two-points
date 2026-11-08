@@ -1,0 +1,4 @@
+start 0: sum R logP +1.3e-15  -sum T logP +0.00000  -sum R^2/2P -0.50000  b -0.500000
+start 1: sum R logP +1.4e-15  -sum T logP +0.00000  -sum R^2/2P -0.50000  b -0.500000
+start 2: sum R logP +2.1e-15  -sum T logP +0.00000  -sum R^2/2P -0.50000  b -0.500000
+n=4 k=2 C sup b -5.000000e-01 ; largest -sum T log P seen 0.00000

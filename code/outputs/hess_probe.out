@@ -1,0 +1,4 @@
+n=3 random Q: top eigenvalue max -4.314e-07 median -1.028e-01
+n=3 maximiser: |offdiag| 2.99e-01 diag [0.5442 0.3197 0.7178]
+n=4 random Q: top eigenvalue max -2.119e-04 median -3.411e-02
+n=4 maximiser: |offdiag| 3.31e-01 diag [0.6692 0.2019 0.5641 0.9637]
