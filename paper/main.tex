@@ -30,7 +30,7 @@
 
 \begin{document}
 \begin{abstract}
-For a positive contraction $Q$ on $\ell^2(E)$ with $E$ finite, let $P_Q$ be the determinantal probability measure on $2^E$ and $\Ent(Q)$ its Shannon entropy. Lyons conjectured in 2003 that $\Ent$ is concave in $Q$. We prove the conjecture when $|E|=2$. For general $E$ we write the second derivative of $\Ent$ along a line as a negative quadratic form in the derivatives of the principal minors of $Q$ plus a sum, over subsets $T$ with $|T|\ge2$, of the second derivatives of the minors $\det Q_T$ weighted by M\"obius sums of $\log P_Q$. For two-element $T$ these weights are nonnegative by the Hadamard--Fischer inequality, which is what makes the case $|E|=2$ work. At a reducible kernel $Q=Q_1\oplus Q_2$ the second variation vanishes in every off-block direction, and the entropy decreases there at fourth order, by the $\chi^2$ term of the mutual information between the two blocks. We also report numerical evidence for $|E|\le4$, for real and complex kernels: the largest eigenvalue of the Hessian of $\Ent$ is negative at random kernels, and its supremum, zero, is approached at reducible kernels.
+For a positive contraction $Q$ on $\ell^2(E)$ with $E$ finite, let $P_Q$ be the determinantal probability measure on $2^E$ and $\Ent(Q)$ its Shannon entropy. Lyons conjectured in 2003 that $\Ent$ is concave in $Q$. We prove the conjecture when $|E|=2$. For general $E$ we write the second derivative of $\Ent$ along a line as a negative quadratic form in the derivatives of the principal minors of $Q$ plus a sum, over subsets $T$ with $|T|\ge2$, of the second derivatives of the minors $\det Q_T$ weighted by M\"obius sums of $\log P_Q$. For two-element $T$ these weights are nonnegative by the Hadamard--Fischer inequality, which is what makes the case $|E|=2$ work. At a reducible kernel $Q=Q_1\oplus Q_2$ the second variation vanishes in every off-block direction, and the entropy decreases there at fourth order, by the $\chi^2$ term of the mutual information between the two blocks. For blocks of sizes $k$ and $n-k$ and $\|D\|_F=1$ the fourth-order coefficient is at least $2/(k(n-k))$, with equality at $Q=\frac12I$; the proof is a Cramér--Rao bound for a centred pair statistic combined with the nonnegativity of the inverse of the indicator covariance. We also report numerical evidence for $|E|\le4$, for real and complex kernels: the largest eigenvalue of the Hessian of $\Ent$ is negative at random kernels, and its supremum, zero, is approached at reducible kernels.
 \end{abstract}
 \maketitle
 
@@ -52,7 +52,7 @@ The conjecture is restated as Conjecture~2.6 of Lyons's survey \cite{Ly14}. By f
 Conjecture~\ref{conj} holds when $|E|=2$.
 \end{theorem}
 
-Section~\ref{sec:two} proves Theorem~\ref{thm:main}. Section~\ref{sec:general} gives the second variation of $\Ent$ for arbitrary finite $E$ (Proposition~\ref{prop:second}) and explains which part of the two-point argument survives. Section~\ref{sec:reducible} shows that the second variation vanishes at reducible kernels in the off-block directions and identifies the fourth-order term. Section~\ref{sec:numerics} records numerical evidence for $|E|=3$ and $4$.
+Section~\ref{sec:two} proves Theorem~\ref{thm:main}. Section~\ref{sec:general} gives the second variation of $\Ent$ for arbitrary finite $E$ (Proposition~\ref{prop:second}) and explains which part of the two-point argument survives. Section~\ref{sec:reducible} shows that the second variation vanishes at reducible kernels in the off-block directions and identifies the fourth-order term, which Theorem~\ref{thm:quartic} bounds below by $2\|D\|_F^4/(k(n-k))$, sharply. Section~\ref{sec:numerics} records numerical evidence for $|E|=3$ and $4$.
 
 \section{Two points}\label{sec:two}
 
@@ -193,6 +193,41 @@ and $\delta_S=r_St^2+O(t^4)$.
 
 For $|E|=2$ and $Q=\operatorname{diag}(q_1,q_2)$, $D=\bigl(\begin{smallmatrix}0&x\\\bar x&0\end{smallmatrix}\bigr)$, the four atoms are $p_S\pm t^2|x|^2$ and the coefficient is $\frac12|x|^4\sum_S p_S^{-1}$; for $\|D\|_F=1$ and $q_1=q_2=\frac12$ it equals $2$. Two consequences are worth recording. First, the Hessian of $\Ent$ on $\{0<Q<I\}$ is singular at every reducible kernel, so a proof of Conjecture~\ref{conj} cannot rest on a uniform negative bound for the second variation; near reducible kernels the fourth-order term is the one that carries the sign. Second, the lemma gives more than the local statement: along every off-block line through a reducible kernel, $\Ent$ is maximal at the reducible kernel itself, because $I(t)\ge0$. Concavity along such a line, however, would need $I$ to be convex in $t$, which Lemma~\ref{lem:marg} does not give.
 
+The fourth-order coefficient is bounded below uniformly in $Q$ and $|E|$.
+
+\begin{theorem}\label{thm:quartic}
+In the setting of Proposition~\ref{prop:reducible}, let $|B_1|=k$, $|B_2|=n-k$ and $x_{ij}=|D_{ij}|^2$ for $i\in B_1$, $j\in B_2$. Then
+\[
+\frac12\sum_{S\subseteq E}\frac{r_S^2}{p_S}\;\ge\;8\sum_{i\in B_1,\,j\in B_2}x_{ij}^2\;\ge\;\frac{2\,\|D\|_F^4}{k(n-k)}.
+\]
+Both inequalities are equalities when $Q=\frac12I$ and $|D_{ij}|$ is constant on $B_1\times B_2$.
+\end{theorem}
+
+\begin{proof}
+Write $\xi_i=\mathbf 1[i\in Y]$, $q_i=Q_{ii}$, and let $C^{(j)}$ be the covariance matrix of $(\xi_i)_{i\in B_j}$ under $P_{Q_j}$, so that $C^{(j)}_{ii}=q_i(1-q_i)\le\frac14$ and $C^{(j)}_{ii'}=-|Q_{ii'}|^2\le0$ for $i\ne i'$. A linear combination of the $\xi_i$, $i\in B_j$, that is constant on $2^{B_j}$ is zero (compare $\emptyset$ with the singletons), and $P_{Q_j}$ charges every subset of $B_j$, so $C^{(j)}$ is positive definite.
+
+\emph{Step 1.} Since $\sum_Sr_S=0$ and $p_S>0$, for every function $f$ on $2^E$ the Cauchy--Schwarz inequality gives
+\begin{equation}\label{eq:cr}
+\Bigl(\sum_Sr_Sf(S)\Bigr)^2=\Bigl(\sum_Sr_S\bigl(f(S)-E_{P_Q}f\bigr)\Bigr)^2\le\Bigl(\sum_S\frac{r_S^2}{p_S}\Bigr)\operatorname{Var}_{P_Q}(f).
+\end{equation}
+
+\emph{Step 2.} For a real $B_1\times B_2$ matrix $W$ put $f=\sum_{i\in B_1,j\in B_2}W_{ij}(\xi_i-q_i)(\xi_j-q_j)$. Under $P_{Q+tD}$ we have $P[\xi_i=1]=q_i$, because $D$ has zero diagonal, and for $i\in B_1$, $j\in B_2$,
+\[
+P_{Q+tD}[\xi_i=\xi_j=1]=\det\begin{pmatrix}q_i&tD_{ij}\\t\bar D_{ij}&q_j\end{pmatrix}=q_iq_j-t^2x_{ij}.
+\]
+Hence $E_{P_{Q+tD}}f=-t^2\sum W_{ij}x_{ij}$ and $\sum_Sr_Sf(S)=-\sum W_{ij}x_{ij}$. Under $P_Q=P_{Q_1}\otimes P_{Q_2}$ the two blocks are independent, so $\operatorname{Var}_{P_Q}(f)=\tr\bigl(C^{(1)}WC^{(2)}W^{\mathsf T}\bigr)$.
+
+\emph{Step 3.} The matrix $C^{(1)}$ has nonpositive off-diagonal entries and is positive definite, so its inverse has nonnegative entries: with $s=\max_iC^{(1)}_{ii}$ and $N=I-C^{(1)}/s$, the matrix $N$ is entrywise nonnegative and symmetric, its spectral radius is its largest eigenvalue $1-\lambda_{\min}(C^{(1)})/s<1$, and $(C^{(1)})^{-1}=s^{-1}\sum_{m\ge0}N^m$. Let $V=(x_{ij})$ and take $W=(C^{(1)})^{-1}V$. Then $\sum W_{ij}x_{ij}=\tr G$ and $\operatorname{Var}_{P_Q}(f)=\tr(GC^{(2)})$, where $G=V^{\mathsf T}(C^{(1)})^{-1}V$ is positive semidefinite with nonnegative entries. As the off-diagonal entries of $C^{(2)}$ are nonpositive, $\tr(GC^{(2)})\le\sum_jG_{jj}C^{(2)}_{jj}\le\frac14\tr G$, and \eqref{eq:cr} gives $\sum_Sr_S^2/p_S\ge4\tr G$.
+
+\emph{Step 4.} Let $v_j$ be the $j$-th column of $V$. By Cauchy--Schwarz in the inner product defined by $C^{(1)}$, and again because $v_j\ge0$ entrywise and the off-diagonal entries of $C^{(1)}$ are nonpositive,
+\[
+v_j^{\mathsf T}(C^{(1)})^{-1}v_j\ge\frac{|v_j|^4}{v_j^{\mathsf T}C^{(1)}v_j}\ge\frac{|v_j|^4}{\sum_iC^{(1)}_{ii}x_{ij}^2}\ge4|v_j|^2.
+\]
+Summing over $j$, $\tr G\ge4\sum x_{ij}^2$, which is the first inequality. The second follows from $\|D\|_F^2=2\sum x_{ij}$ and the Cauchy--Schwarz inequality over the $k(n-k)$ pairs. When $Q=\frac12I$, $C^{(1)}$ and $C^{(2)}$ are $\frac14I$ and all inequalities above become equalities for constant $x_{ij}$, except possibly \eqref{eq:cr}. There, with $M_S$ and $J_S$ as in Section~\ref{sec:numerics}, $p_S(t)=\det(\frac12I+tJ_SD)=2^{-n}\det(I+2tJ_SD)$; since $\tr(J_SD)=0$ and $\tr(J_SDJ_SD)=2\sum_{i\in B_1,j\in B_2}(J_S)_{ii}(J_S)_{jj}x_{ij}$, this gives $r_S/p_S=-4\sum(J_S)_{ii}(J_S)_{jj}x_{ij}=-16f(S)$ for $W=V$, because $(J_S)_{ii}=2(\xi_i-\frac12)$. So $r_S/p_S$ is proportional to $f-E_{P_Q}f$ and \eqref{eq:cr} is an equality too.
+\end{proof}
+
+For $n=2$ the bound is the value $2$ computed above. Theorem~\ref{thm:quartic} says that along any off-block line through a reducible kernel with $\|D\|_F=1$, $\Ent(Q+tD)\le\Ent(Q)-2t^4/(k(n-k))+O(t^6)$; the constant does not degenerate as $Q$ approaches the boundary of $\{0<Q<I\}$ or as the blocks become ill-conditioned.
+
 \section{Numerical evidence for three and four points}\label{sec:numerics}
 
 We searched for counterexamples in two ways, with kernels $Q=U\operatorname{diag}(\lambda)U^*$ for $U$ from the QR factorisation of a Gaussian matrix (real or complex) and $\lambda\in(0,1)^n$.
@@ -209,7 +244,7 @@ H_{ab}=-\sum_S\Bigl(\partial_a\partial_bp_S\,\log p_S+\frac{\partial_ap_S\,\part
 \]
 This agrees with finite differences to relative accuracy $10^{-6}$ for real and $10^{-7}$ for complex kernels, $n=2,3,4$. Writing $Q=U\operatorname{diag}(\sigma(x))U^*$ with $\sigma$ the logistic function and $U$ the exponential of a real skew-symmetric (respectively skew-Hermitian) matrix, we maximised the largest eigenvalue of $H$ over $(x,U)$ by Nelder--Mead. Over real symmetric directions, with $8$, $20$ and $10$ starts for $n=2,3,4$, the largest values found were $3.8\times10^{-15}$, $3.6\times10^{-15}$ and $7.1\times10^{-15}$; over Hermitian directions, with $6$, $8$ and $6$ starts, $1.6\times10^{-15}$, $3.2\times10^{-15}$ and $4.1\times10^{-15}$. These are zero to rounding, and every maximiser was reducible ($n=2$: diagonal; $n=3,4$: one point split off from the rest), which is the null direction of Proposition~\ref{prop:reducible}. At random kernels, without optimisation, the largest eigenvalue was strictly negative (median $-0.10$ for $n=3$ and $-0.034$ for $n=4$ over $40$ real kernels).
 
-\emph{Fourth order at reducible kernels.} For $48$ reducible kernels with random off-block directions $\|D\|_F=1$ ($n=2,\dots,5$, real and complex, random block sizes), a least-squares fit of $\Ent(Q+tD)-\Ent(Q)=at^2+bt^4+ct^6$ on $t\in[0.02,0.06]$ gave $|a|\le10^{-6}$ and $b<0$ in every case, the largest being $b=-0.536$, in agreement with Proposition~\ref{prop:reducible}. The quantity $\frac12\sum_Sr_S^2/p_S$, computed from the $t^2$ coefficients of the atoms, has infimum $2$, $1$ and $0.5$ for $n=2$, for $n=3$ with blocks of sizes $1,2$, and for $n=4$ with two blocks of size $2$, approached as the spectrum of $Q$ tends to $\{\frac12\}$.
+\emph{Fourth order at reducible kernels.} For $48$ reducible kernels with random off-block directions $\|D\|_F=1$ ($n=2,\dots,5$, real and complex, random block sizes), a least-squares fit of $\Ent(Q+tD)-\Ent(Q)=at^2+bt^4+ct^6$ on $t\in[0.02,0.06]$ gave $|a|\le10^{-6}$ and $b<0$ in every case, the largest being $b=-0.536$, in agreement with Proposition~\ref{prop:reducible}. The quantity $\frac12\sum_Sr_S^2/p_S$, computed from the $t^2$ coefficients of the atoms, has infimum $2$, $1$ and $0.5$ for $n=2$, for $n=3$ with blocks of sizes $1,2$, and for $n=4$ with two blocks of size $2$, approached as the spectrum of $Q$ tends to $\{\frac12\}$; these are the values $2/(k(n-k))$ of Theorem~\ref{thm:quartic}. In $60$ random reducible kernels for each of $(n,k)=(3,1),(4,2),(5,2),(6,3)$, real and complex, the ratio of $\sum_Sr_S^2/p_S$ to the Cramér--Rao bound of Step~2 with the optimal $W$ was at least $1$, and that bound was at least $1.004$ times $16\sum x_{ij}^2$.
 
 \section*{Acknowledgements and funding}
 The research presented in this paper was supported by the European Research
@@ -228,7 +263,7 @@ has a management role at Convex Nexus Capital. These entities are included
 in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, found the proof of Theorem~\ref{thm:main}, the formula of Proposition~\ref{prop:second} and Proposition~\ref{prop:reducible}, wrote and ran the computations of Section~\ref{sec:numerics}, and wrote the paper. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, found the proof of Theorem~\ref{thm:main}, the formula of Proposition~\ref{prop:second}, Proposition~\ref{prop:reducible} and Theorem~\ref{thm:quartic}, wrote and ran the computations of Section~\ref{sec:numerics}, and wrote the paper. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \section*{Data availability}
 No data were used. The code for the computations of Remark~\ref{rem:sharp} and Sections~\ref{sec:general}--\ref{sec:numerics}, with their outputs, is available at\\ \url{https://github.com/yspennstate/lyons-determinantal-entropy-two-points}.

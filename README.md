@@ -10,7 +10,9 @@ Conjecture 9.2; ICM 2014 survey, Conjecture 2.6) that $\mathrm{Ent}$ is concave 
 $|E|=2$, gives the second derivative of $\mathrm{Ent}$ along a line for every finite $E$ in terms of the principal
 minors of $Q$ (the coefficients on two-element sets are nonnegative by Hadamard--Fischer; the coefficient on a
 three-element set takes both signs), shows that at a block-diagonal kernel the second derivative vanishes in every
-off-block direction while the entropy drops at fourth order, and reports numerical evidence for $|E|\le4$, real and
+off-block direction while the entropy drops at fourth order, proves that for blocks of sizes $k$ and $n-k$
+and $\|D\|_F=1$ the fourth-order coefficient is at least $2/(k(n-k))$, with equality at $Q=\tfrac12 I$
+(Theorem 4.3), and reports numerical evidence for $|E|\le4$, real and
 complex.
 
 ## Code
@@ -46,6 +48,10 @@ run them from `code/`. Their outputs and the saved maximisers are in `code/outpu
   off-block $D$, $n=2,\dots,5$ (the paper used `6 3`, 48 cases, output `quartic_offblock_s3.out`).
 - `quartic_terms.py N K R|C STARTS SEED`: the exact quartic coefficient $-\frac12\sum_S r_S^2/p_S$ at
   $Q=Q_1\oplus Q_2$ with blocks of sizes $K$ and $N-K$, minimised over $Q$ and $D$ (outputs `qt_*.out`).
+- `cr_chain_check.py N K R|C TRIALS SEED`: checks the chain in the proof of Theorem 4.3 on random reducible
+  kernels ($\sum_S r_S^2/p_S$ against the Cramer--Rao bound and that bound against $16\sum x_{ij}^2$) and the
+  equality at $Q=\tfrac12 I$; the paper used `3 1`, `4 2`, `5 2`, `6 3`, real and complex, `60 11`
+  (`outputs/cr_chain_check.out`).
 
 ## Funding
 
