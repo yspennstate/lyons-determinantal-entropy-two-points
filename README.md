@@ -12,7 +12,7 @@ minors of $Q$ (the coefficients on two-element sets are nonnegative by Hadamard-
 three-element set takes both signs), shows that at a block-diagonal kernel the second derivative vanishes in every
 off-block direction while the entropy drops at fourth order, proves that for blocks of sizes $k$ and $n-k$
 and $\|D\|_F=1$ the fourth-order coefficient is at least $2/(k(n-k))$, with equality at $Q=\tfrac12 I$
-(Theorem 4.3), and reports numerical evidence for $|E|\le4$, real and
+(Theorem 4.3), and reports numerical evidence for $|E|\le5$, real and
 complex.
 
 ## Code
@@ -38,9 +38,11 @@ run them from `code/`. Their outputs and the saved maximisers are in `code/outpu
 
 - `hess_search.py N STARTS SEED` (real) and `hess_search_c.py N STARTS SEED` (complex): the exact Hessian of
   $\mathrm{Ent}$ from $p_S=\det M_S$ and Jacobi's formula, and a Nelder--Mead search for its largest eigenvalue over
-  $Q=U\operatorname{diag}(\sigma(x))U^*$. The paper used `2 8 1`, `3 20 1`, `4 10 1` (real) and `2 6 1`, `3 8 1`,
-  `4 6 1` (complex); outputs `hess_n*_s1.out`, `hess_c_n*_s1.out`, maximisers `hess_best_n*_s1.npy`,
+  $Q=U\operatorname{diag}(\sigma(x))U^*$. The paper used `2 8 1`, `3 20 1`, `4 10 1`, `5 3 1` (real) and `2 6 1`, `3 8 1`,
+  `4 6 1`, `5 3 1` (complex); outputs `hess_n*_s1.out`, `hess_c_n*_s1.out`, maximisers `hess_best_n*_s1.npy`,
   `hess_c_best_n*_s1.npy`.
+- `hess_reducible5.py`: the connected component of point 0 in the support graph of the two $n=5$ maximisers
+  and the largest entry outside it (one point splits off in each).
 - `hess_check.py`, `hess_check_c.py`: the Hessian against central finite differences.
 - `hess_block.py`, `hess_block_c.py`: print $|Q|$ for the saved maximisers, which are reducible.
 - `hess_probe.py`: the largest Hessian eigenvalue at 40 random real kernels, $n=3,4$.
@@ -52,6 +54,9 @@ run them from `code/`. Their outputs and the saved maximisers are in `code/outpu
   kernels ($\sum_S r_S^2/p_S$ against the Cramer--Rao bound and that bound against $16\sum x_{ij}^2$) and the
   equality at $Q=\tfrac12 I$; the paper used `3 1`, `4 2`, `5 2`, `6 3`, real and complex, `60 11`
   (`outputs/cr_chain_check.out`).
+- `chi2_min.py S N K R|C STARTS SEED`: minimises $\sum_S r_S^2/p_S$ divided by $16\sum x_{ij}^2$ over reducible
+  $Q$ and off-block $D$ by Nelder--Mead; `chi2_min.py F N R|C STARTS SEED` does the same for the one-block
+  Fisher bound. Outputs `chi2_*.out`.
 
 ## Funding
 

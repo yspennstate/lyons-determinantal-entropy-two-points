@@ -1,0 +1,4 @@
+start 0 top eigenvalue 2.357368e-15 spectrum [0.1139 0.6469 0.6603 0.6603 0.6603]
+start 1 top eigenvalue 2.244437e-15 spectrum [0.4562 0.4562 0.4562 0.5348 0.5606]
+start 2 top eigenvalue 2.423321e-15 spectrum [0.2975 0.419  0.419  0.419  0.419 ]
+n=5 best top eigenvalue 2.423321e-15
